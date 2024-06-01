@@ -74,17 +74,17 @@ export default function Home() {
                   key={j}
                   className={`border border-black w-8 h-8 text-center ${i % 3 === 2 ? 'border-b-2' : ''} ${j % 3 === 2 ? 'border-r-2' : ''} ${i === 0 ? 'border-t-2' : ''} ${j === 0 ? 'border-l-2' : ''}`}
                 >
-                  <input type="text" value={cell || ""} readOnly={cell ? true : false} onChange={(e) => updateCell(e, i, j)} className="w-12 h-12 p-2 text-center" />
+                  <input type="text" value={cell || ""} readOnly={cell ? true : false} onChange={(e) => updateCell(e, i, j)} className="w-8 h-8 sm:w-12 sm:h-12 p-2 text-center" />
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="w-100 flex justify-center gap-10 p-5">
-        <button className="w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={submit}>Submit</button>
-        <button className="w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={clear}>Clear</button>
-        <button className="w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={help}>Help</button>
+      <div className="w-full flex justify-center gap-10 p-5">
+        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={submit}>Submit</button>
+        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={clear}>Clear</button>
+        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={help}>Help</button>
       </div>
       <div className="h-20 w-full bg-white ad">
 
