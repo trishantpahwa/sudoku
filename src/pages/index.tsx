@@ -1,3 +1,4 @@
+import { solveSudoku } from "@/util";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -63,6 +64,10 @@ export default function Home() {
     alert(`Row starts from 0 to 9\n\nRow: ${row} Column: ${col} Value: ${solution[row][col]}`);
   }
 
+  function solve() {
+    setSudoku(solution.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
+  }
+
   return (
     <div className="w-full flex flex-col justify-center">
       <div className="w-full flex justify-center gap-10 p-5">
@@ -89,9 +94,10 @@ export default function Home() {
         </tbody>
       </table>
       <div className="w-full flex justify-center gap-10 p-5">
-        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={submit}>Submit</button>
-        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={clear}>Clear</button>
-        <button className="w-20 md:w-32 border-2 p-2 border-black rounded-md font-semibold" onClick={help}>Help</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={submit}>Submit</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={clear}>Clear</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={help}>Help</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={solve}>Solve</button>
       </div>
       <div className="h-20 w-full bg-white ad">
 
