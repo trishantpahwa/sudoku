@@ -22,13 +22,14 @@ export default function Home() {
     }
   };
 
-  async function fetchSudoku() {
-    const response = await fetch("/api/sudoku");
-    const data = await response.json();
-    setValue(data.value);
-    setSudoku(data.value.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
-    setSolution(data.solution);
-    console.log(data.solution);
+  async function fetchSudoku(difficulty: string = "easy") {
+    const puzzleResponse = await fetch(`/api/sudoku?difficulty=${difficulty}`);
+    const puzzleData = await puzzleResponse.json();
+    setValue(puzzleData.board);
+    setSudoku(puzzleData.board.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
+    const solvedBoard: any = solveSudoku(puzzleData.board.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
+    setSolution(solvedBoard);
+    console.log(solvedBoard);
   }
 
   function submit() {
