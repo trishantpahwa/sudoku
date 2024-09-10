@@ -22,13 +22,14 @@ export default function Home() {
     }
   };
 
-  async function fetchSudoku() {
-    const response = await fetch("/api/sudoku");
-    const data = await response.json();
-    setValue(data.value);
-    setSudoku(data.value.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
-    setSolution(data.solution);
-    console.log(data.solution);
+  async function fetchSudoku(difficulty: string = "easy") {
+    const puzzleResponse = await fetch(`/api/sudoku?difficulty=${difficulty}`);
+    const puzzleData = await puzzleResponse.json();
+    setValue(puzzleData.board);
+    setSudoku(puzzleData.board.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
+    const solvedBoard: any = solveSudoku(puzzleData.board.map((row: any) => row.map((cell: any) => (cell === 0 ? null : cell))));
+    setSolution(solvedBoard);
+    console.log(solvedBoard);
   }
 
   function submit() {
@@ -64,6 +65,12 @@ export default function Home() {
 
   return (
     <div className="w-full flex flex-col justify-center">
+      <div className="w-full flex justify-center gap-10 p-5">
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("easy")}>Easy</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("medium")}>Medium</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("hard")}>Hard</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("random")}>Random</button>
+      </div>
       <h1 className="text-center text-3xl font-bold">Sudoku</h1>
       <table className="flex border-collapse border border-black p-5 justify-center">
         <tbody>

@@ -6,9 +6,10 @@ export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse
 ) {
+    const difficulty = request.query.difficulty ?? "easy";
     const _response = await axios.get(
-        "https://sudoku-api.vercel.app/api/dosuku"
+        `https://sugoku.onrender.com/board?difficulty=${difficulty}`
     );
-    return response.status(200).json(_response.data.newboard.grids[0]);
+    return response.status(200).json(_response.data);
 }
 
