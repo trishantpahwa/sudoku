@@ -74,7 +74,7 @@ export default function Home() {
         <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("easy")}>Easy</button>
         <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("medium")}>Medium</button>
         <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("hard")}>Hard</button>
-        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("random")}>Random</button>
+        <button className="w-1/4 border-2 p-2 border-black rounded-md font-semibold" onClick={() => fetchSudoku("expert")}>Expert</button>
       </div>
       <h1 className="text-center text-3xl font-bold">Sudoku</h1>
       <table className="flex border-collapse border border-black p-5 justify-center">
